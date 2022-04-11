@@ -1,16 +1,26 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider />
+<MudThemeProvider Theme="_currentTheme"/>
 <MudDialogProvider />
 <MudSnackbarProvider />
 
-<MudLayout>
-    <MudAppBar Elevation="1">
+<MudLayout  RightToLeft="@_rightToLeft">
+    <MudAppBar Elevation="1" Color="Color.Primary">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
         <MudText Typo="Typo.h5" Class="ml-3">Application</MudText>
         <MudSpacer />
-        <MudIconButton Icon="@Icons.Custom.Brands.Facebook" Color="Color.Inherit" Edge="Edge.End" />
-        <MudIconButton Icon="@Icons.Custom.Brands.Twitter" Color="Color.Inherit" Edge="Edge.End" />
+        <MudTooltip Text="Facebook">
+            <MudIconButton Icon="@Icons.Custom.Brands.Facebook" Color="Color.Inherit" Edge="Edge.End" />
+        </MudTooltip>
+        <MudTooltip Text="Twitter">
+            <MudIconButton Icon="@Icons.Custom.Brands.Twitter" Color="Color.Inherit" Edge="Edge.End" />
+        </MudTooltip>
+        <MudTooltip Text="Toggle Dark Mode">
+            <MudIconButton Icon="@Icons.Material.Filled.Brightness4" Color="Color.Inherit" OnClick="@((e) => DarkMode())" />
+        </MudTooltip>
+        <MudTooltip Text="Toggle right-to-left/left-to-right">
+            <MudIconButton Icon="@Icons.Material.Filled.FormatTextdirectionRToL" Color="Color.Inherit" OnClick="@((e) => RightToLeftToggle())" />
+        </MudTooltip>
         <LoginDisplay In_Direction = "_rightToLeft ? Direction.Right : Direction.Left"/>
     </MudAppBar>
     <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2" Color="Color.Default">

@@ -16,27 +16,34 @@ using Client;
 using Client.Shared;
 using MudBlazor;
 using Client.Extensions;
+using Client.Infrastructure.Settings;
 
 namespace Client.Shared
 {
     public partial class MainLayout
     {
-        bool _drawerOpen = true;
-        //private MudTheme? _currentTheme = null;
+        private bool _drawerOpen = true;
+        private MudTheme? _currentTheme = null;
         private bool _rightToLeft = false;
         void DrawerToggle()
         {
             _drawerOpen = !_drawerOpen;
         }
 
-        protected override void OnInitialized()
+        
+        protected override async Task OnInitializedAsync()
         {
-            base.OnInitialized();
+            
             //if not home page, the navbar starts open
             if (!_navigationManager.IsHomePage())
             {
                 _drawerOpen = true;
             }
+            _currentTheme = KandyWebTheme.DefaultTheme;
+            _currentTheme = await _clientPreferenceManager.GetCurrentThemeAsync();
+            _rightToLeft = await _clientPreferenceManager.IsRTL();
+            
+           // await base.OnInitializedAsync();
         }
 
         private async Task RightToLeftToggle()
@@ -44,6 +51,14 @@ namespace Client.Shared
             var isRtl = await _clientPreferenceManager.ToggleLayoutDirection();
             _rightToLeft = isRtl;
             _drawerOpen = false;
+        }
+
+        private async Task DarkMode()
+        {
+            bool isDarkMode = await _clientPreferenceManager.ToggleDarkModeAsync();
+            _currentTheme = isDarkMode
+                ? KandyWebTheme.DefaultTheme
+                : KandyWebTheme.DarkTheme;
         }
     }
 }

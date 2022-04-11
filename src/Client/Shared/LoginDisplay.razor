@@ -8,9 +8,12 @@
     <Authorized>
        <MudMenu Direction="@In_Direction" OffsetX="true" Dense="true" Class="mt-1 ml-4">
         <ActivatorContent>
-                <MudAvatar Color="Color.Secondary">@context.User.Identity?.Name.Substring(0,1) </MudAvatar>
-
-            </ActivatorContent>
+            <MudTooltip Text="@context.User.Identity?.Name">    
+                <MudAvatar Color="Color.Secondary">
+                    @context.User.Identity?.Name.Substring(0,1) 
+                </MudAvatar>
+            </MudTooltip>
+        </ActivatorContent>
             <ChildContent>
                 <MudDivider Class="mb-2" />
                 <MudListItem Text="Account" Href="/account" Icon="@Icons.Material.Outlined.Person" />
@@ -19,9 +22,12 @@
         </MudMenu>
     </Authorized>
     <NotAuthorized>
-        <MudIconButton Icon="@Icons.Material.Filled.Login" Color="Color.Inherit" Edge="Edge.End" Href="authentication/login"/>
+        <MudTooltip Text="Login">
+            <MudIconButton Icon="@Icons.Material.Filled.Login" Color="Color.Inherit" Edge="Edge.End" Href="authentication/login"/>
+        </MudTooltip>
     </NotAuthorized>
 </AuthorizeView>
+
 
 
 

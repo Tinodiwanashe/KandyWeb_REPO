@@ -18,15 +18,14 @@ using MudBlazor;
 using Blazored.LocalStorage;
 using Client.Infrastructure.Managers.Preferences;
 
-namespace Client.Pages
+namespace Client.Shared
 {
-    public partial class Index
+    public partial class RedirectToLogin
     {
-        private bool arrows = false;
-        private bool bullets = true;
-        private bool autocycle = true;
-        private Transition transition = Transition.Fade;
-        //[CascadingParameter]
-        //public Task<AuthenticationState> AuthState { get; set; }
+        protected override async Task OnInitializedAsync()
+        {
+            Navigation.NavigateTo($"authentication/login?returnUrl={Uri.EscapeDataString(Navigation.Uri)}");
+            await Task.CompletedTask;
+        }
     }
 }
