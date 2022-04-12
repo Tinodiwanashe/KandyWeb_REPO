@@ -15,8 +15,8 @@ using Microsoft.JSInterop;
 using Client;
 using Client.Shared;
 using MudBlazor;
-using Client.Extensions;
 using Client.Infrastructure.Settings;
+using Client.Extensions;
 
 namespace Client.Shared
 {
@@ -35,7 +35,7 @@ namespace Client.Shared
         {
             
             //if not home page, the navbar starts open
-            if (!_navigationManager.IsHomePage())
+            if (_navigationManager.IsHomePage())
             {
                 _drawerOpen = true;
             }

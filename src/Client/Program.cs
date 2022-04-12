@@ -1,13 +1,13 @@
 
 using Client.Infrastructure.Managers.Preferences;
 using Client.Infrastructure.Settings;
-using Client.Extensions;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;
 //using Shared.Constants.Localization;
 using System.Globalization;
+using Client.Extensions;
 
 var builder = WebAssemblyHostBuilder
               .CreateDefault(args)
