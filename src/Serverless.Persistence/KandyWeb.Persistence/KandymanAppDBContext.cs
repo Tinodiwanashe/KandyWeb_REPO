@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace KandyWeb.Persistence
 {
-    public class ApplicationDBContext: DbContext
+    public class KandymanAppDBContext: DbContext
     {
         public DbSet<Resume> Resumes { get; set; }
         public DbSet<Like> Likes { get; set; }
@@ -19,49 +19,46 @@ namespace KandyWeb.Persistence
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var Endpoint = "https://localhost:8081";
-            var Key = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
+            var Endpoint = "https://kandyman-720.documents.azure.com:443/";
+            var Key = "tJvfN9syiaOTZjBvERSHNHq6wPujg9fwFJfpldBQU3MyoQfzUUI9zW7F8Oa0DfAG4YytH4ZdgMHErGoxsY50Ig==";
+            var databaseName = "KandymanDB";
 
-            optionsBuilder.UseCosmos(
-                                     Endpoint,
-                                     Key,
-                                      "CommunityDatabase")
-                                     //.UseLoggerFactory(GenerateLoggerFactory())
+            optionsBuilder.UseCosmos(Endpoint,Key,databaseName)
                                      .EnableSensitiveDataLogging(true);
             base.OnConfiguring(optionsBuilder);
         }
 
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-        {
-            foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
-            {
-                switch (entry.State)
-                {
-                    case EntityState.Added:
-                        entry.Entity.CreatedBy = "jhnh knjkj gughjhgjb yhhj";//_currentUserService.UserId;
-                        entry.Entity.Created = DateTime.UtcNow;
-                        break;
-                    case EntityState.Modified:
-                        entry.Entity.LastModifiedBy = "sdd";
-                        entry.Entity.LastModified = DateTime.UtcNow;
-                        break;
-                }
-            }
-            return base.SaveChangesAsync(cancellationToken);
-        }
+        //public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        //{
+        //    foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
+        //    {
+        //        switch (entry.State)
+        //        {
+        //            case EntityState.Added:
+        //                entry.Entity.CreatedBy = "jhnh knjkj gughjhgjb yhhj";//_currentUserService.UserId;
+        //                entry.Entity.Created = DateTime.UtcNow;
+        //                break;
+        //            case EntityState.Modified:
+        //                entry.Entity.LastModifiedBy = "sdd";
+        //                entry.Entity.LastModified = DateTime.UtcNow;
+        //                break;
+        //        }
+        //    }
+        //    return base.SaveChangesAsync(cancellationToken);
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserProfile>().ToContainer("UserProfiles");
             modelBuilder.Entity<UserProfile>()
                 .OwnsMany(p => p.Resumes)
-                .WithOne(p => p.UserProfile);
+                .WithOwner(p => p.UserProfile);
                 //.OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<UserProfile>().ToContainer("UserProfiles");
             modelBuilder.Entity<UserProfile>()
                 .OwnsMany(p => p.Likes)
-                .WithOne(p => p.UserProfile);
+                .WithOwner(p => p.UserProfile);
                 //.OnDelete(DeleteBehavior.NoAction);
 
             base.OnModelCreating(modelBuilder);

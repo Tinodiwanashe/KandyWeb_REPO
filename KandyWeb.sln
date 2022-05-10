@@ -21,15 +21,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{AD1E5B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{1937EA71-00A5-42F0-A6D1-E73144E0865D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KandyWeb.Domain", "src\Serverless.Domain\KandyWeb.Domain\KandyWeb.Domain.csproj", "{DC4CD7FF-9EDA-4B4C-9796-BAE47FB291E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KandyWeb.Domain", "src\Serverless.Domain\KandyWeb.Domain\KandyWeb.Domain.csproj", "{DC4CD7FF-9EDA-4B4C-9796-BAE47FB291E3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2F659C47-B607-4C33-B4CD-6441A9C7D2E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KandyWeb.Infrastructure", "src\Serverless.Infrastructure\KandyWeb.Infrastructure\KandyWeb.Infrastructure.csproj", "{0AE8C3A9-C13E-4796-AFF8-8A5E62306000}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KandyWeb.Infrastructure", "src\Serverless.Infrastructure\KandyWeb.Infrastructure\KandyWeb.Infrastructure.csproj", "{0AE8C3A9-C13E-4796-AFF8-8A5E62306000}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KandyWeb.Persistence", "src\Serverless.Persistence\KandyWeb.Persistence\KandyWeb.Persistence.csproj", "{D45DF548-7345-403A-9C94-35578C0074DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KandyWeb.Application", "src\Serverless.Application\KandyWeb.Application\KandyWeb.Application.csproj", "{3A53B877-6AD5-4C4A-99FB-D9A4DD1F22F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KandyWeb.Application", "src\Serverless.Application\KandyWeb.Application\KandyWeb.Application.csproj", "{3A53B877-6AD5-4C4A-99FB-D9A4DD1F22F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.Api", "src\Server\Server.Api\Server.Api.csproj", "{47F7B747-664F-4FD4-A903-DF62EF84EEAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,14 +57,14 @@ Global
 		{0AE8C3A9-C13E-4796-AFF8-8A5E62306000}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AE8C3A9-C13E-4796-AFF8-8A5E62306000}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AE8C3A9-C13E-4796-AFF8-8A5E62306000}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D45DF548-7345-403A-9C94-35578C0074DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D45DF548-7345-403A-9C94-35578C0074DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D45DF548-7345-403A-9C94-35578C0074DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D45DF548-7345-403A-9C94-35578C0074DB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3A53B877-6AD5-4C4A-99FB-D9A4DD1F22F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3A53B877-6AD5-4C4A-99FB-D9A4DD1F22F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A53B877-6AD5-4C4A-99FB-D9A4DD1F22F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A53B877-6AD5-4C4A-99FB-D9A4DD1F22F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47F7B747-664F-4FD4-A903-DF62EF84EEAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47F7B747-664F-4FD4-A903-DF62EF84EEAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47F7B747-664F-4FD4-A903-DF62EF84EEAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47F7B747-664F-4FD4-A903-DF62EF84EEAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,8 +80,8 @@ Global
 		{DC4CD7FF-9EDA-4B4C-9796-BAE47FB291E3} = {1937EA71-00A5-42F0-A6D1-E73144E0865D}
 		{2F659C47-B607-4C33-B4CD-6441A9C7D2E5} = {67B3270B-822C-4D36-9F27-2F904456DB86}
 		{0AE8C3A9-C13E-4796-AFF8-8A5E62306000} = {2F659C47-B607-4C33-B4CD-6441A9C7D2E5}
-		{D45DF548-7345-403A-9C94-35578C0074DB} = {2F659C47-B607-4C33-B4CD-6441A9C7D2E5}
 		{3A53B877-6AD5-4C4A-99FB-D9A4DD1F22F8} = {1937EA71-00A5-42F0-A6D1-E73144E0865D}
+		{47F7B747-664F-4FD4-A903-DF62EF84EEAA} = {5F40AE17-4370-4318-A736-698D9B3BE829}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AB272987-672E-490A-9F52-D2AA7168731A}

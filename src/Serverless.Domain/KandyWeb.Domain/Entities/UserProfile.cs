@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace KandyWeb.Domain.Entities
 {
-    public class UserProfile: AuditableEntity
+    public class UserProfile: BaseEntity
     {
-        public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string ProfilePicture { get; set; }
@@ -17,6 +16,11 @@ namespace KandyWeb.Domain.Entities
         public string Country { get; set; }
         public string City { get; set; }
         public string UserId { get; set; }
+
+        public string CreatedBy { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public string LastModifiedBy { get; set; }
+        public DateTime? LastModified { get; set; }
 
         public virtual ICollection<Resume> Resumes { get; private set; }
 
